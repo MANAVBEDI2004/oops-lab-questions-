@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+class Student{
+    int score[5];
+    public:
+    void input(){
+        for(int i=0;i<5;i++){
+            cin>>score[i];
+        }
+    }
+    int calscore(){
+        int sum=0;
+        for(int i=0;i<5;i++){
+            sum+=score[i];
+        }
+        return sum;
+    }
+};
+int main() {
+    int n,count=0;
+    cout<<"Enter the number of students: ";
+    cin>>n;
+    Student s1;
+    cout<<"Enter the score of Anna :";
+    s1.input();
+    int max = s1.calscore();
+    for(int i=0;i<n-1;i++){
+        Student s2;
+        cout<<"Enter the score of student "<<i+2<<": ";
+        s2.input();
+        if(max<s2.calscore()){
+            count++;
+        }
+    }
+    cout<<count;
+    return 0;
+}
