@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+class time {
+    private:
+        int hrs;
+        int min;
+        int sec;
+
+    public:
+        time() {
+            hrs = min = sec = 0;
+        }
+
+        time(int hrs, int min, int sec) {
+            this->hrs = hrs;
+            this->min = min;
+            this->sec = sec;
+        }
+
+        void show() {
+            cout << hrs << ":" << min << ":" << sec << endl;
+        }
+
+        void add(time t1, time t2) {
+            this->hrs = t1.hrs + t2.hrs;
+            this->min = t1.min + t2.min;
+            this->sec = t1.sec + t2.sec;
+            normaltime();
+        }
+
+        void normaltime() {
+            if (sec >= 60) {
+                min += sec / 60;
+                sec = sec % 60;
+            }
+            if (min >= 60) {
+                hrs += min / 60;
+                min = min % 60;
+            }
+            if (hrs >= 24) {
+                hrs = hrs % 24;
+            }
+        }
+};
+
+int main() {
+    time t1(10, 12, 54);
+    time t2(14, 15, 12);
+    time t3;
+
+    t3.add(t1, t2);
+
+    t1.show();
+    t2.show();
+    t3.show();
+
+    return 0;
+}
